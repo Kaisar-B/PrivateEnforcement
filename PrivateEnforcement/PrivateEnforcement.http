@@ -1,0 +1,6 @@
+@PrivateEnforcement_HostAddress = http://localhost:5233
+
+GET {{PrivateEnforcement_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
