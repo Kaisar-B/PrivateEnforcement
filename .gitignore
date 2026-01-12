@@ -5,6 +5,8 @@
 
 # dotenv files
 .env
+appsettings.Development.json
+
 
 # User-specific files
 *.rsuser
@@ -12,6 +14,10 @@
 *.user
 *.userosscache
 *.sln.docstates
+*.csproj.user
+
+Logs/
+*.log
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
