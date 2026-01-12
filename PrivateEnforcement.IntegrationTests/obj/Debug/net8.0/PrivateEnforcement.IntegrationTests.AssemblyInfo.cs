@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PrivateEnforcement.IntegrationTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a83cb7b43862f7e05cd5ca6fe8320f22c78dfa08")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+65d57fcc14e773595121fe0384c7434947ec2b43")]
 [assembly: System.Reflection.AssemblyProductAttribute("PrivateEnforcement.IntegrationTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PrivateEnforcement.IntegrationTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
