@@ -11,12 +11,12 @@ namespace Domain.Entities;
 /// </summary>
 public abstract class BaseDomainModel
 {
-    protected BaseDomainModel()=> CreationDateTime = DateTime.Now;
+    protected BaseDomainModel() => CreationDateTime = DateTime.Now;
 
     /// <summary>
     ///     Время создание модели
     /// </summary>
-    public DateTime CreationDateTime { get; set; }
+    public DateTime CreationDateTime { get; init; }
 
     /// <summary>
     ///     Идентификатор объекта
@@ -24,7 +24,7 @@ public abstract class BaseDomainModel
     public long Id { get; set; }
 
     /// <summary>
-    ///     Объект удален
+    ///     Был ли удален аккаунт (soft delete filter)
     /// </summary>
     public bool IsDeleted { get; set; }
 }

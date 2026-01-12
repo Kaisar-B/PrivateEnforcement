@@ -9,7 +9,7 @@ using Domain.Entities.Account.Obligator;
 using Microsoft.EntityFrameworkCore;
 
 namespace Domain.DAL;
-internal class DatabaseContext : DbContext
+public class DatabaseContext : DbContext
 {
     public DatabaseContext(DbContextOptions options) : base(options)
     {
@@ -17,7 +17,8 @@ internal class DatabaseContext : DbContext
 
     public DbSet<AdministratorAccount> Administrators { get; set; }
     public DbSet<EnforcementAccount> Enforcements { get; set; }
+    public DbSet<EnforcementEmployee> EnforcementEmployees { get; set; }
     public DbSet<ObligatorAccount> Obligators { get; set; }
-    public DbSet<ObligatorAssets> ObligatorsAssets { get; set; }
+    public DbSet<ObligatorAsset> ObligatorsAssets { get; set; }
 
 }

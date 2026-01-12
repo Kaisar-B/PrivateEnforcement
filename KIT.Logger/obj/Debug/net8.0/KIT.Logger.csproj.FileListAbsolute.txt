@@ -1,0 +1,13 @@
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\KIT.Logger\bin\Debug\net8.0\KIT.Logger.deps.json
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\KIT.Logger\bin\Debug\net8.0\KIT.Logger.dll
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\KIT.Logger\bin\Debug\net8.0\KIT.Logger.pdb
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\KIT.Logger\obj\Debug\net8.0\KIT.Logger.csproj.AssemblyReference.cache
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\KIT.Logger\obj\Debug\net8.0\KIT.Logger.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\KIT.Logger\obj\Debug\net8.0\KIT.Logger.AssemblyInfoInputs.cache
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\KIT.Logger\obj\Debug\net8.0\KIT.Logger.AssemblyInfo.cs
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\KIT.Logger\obj\Debug\net8.0\KIT.Logger.csproj.CoreCompileInputs.cache
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\KIT.Logger\obj\Debug\net8.0\KIT.Logger.sourcelink.json
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\KIT.Logger\obj\Debug\net8.0\KIT.Logger.dll
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\KIT.Logger\obj\Debug\net8.0\refint\KIT.Logger.dll
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\KIT.Logger\obj\Debug\net8.0\KIT.Logger.pdb
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\KIT.Logger\obj\Debug\net8.0\ref\KIT.Logger.dll

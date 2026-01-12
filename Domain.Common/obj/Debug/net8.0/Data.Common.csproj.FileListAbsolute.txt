@@ -1,0 +1,12 @@
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\Domain.Common\bin\Debug\net8.0\Data.Common.deps.json
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\Domain.Common\bin\Debug\net8.0\Data.Common.dll
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\Domain.Common\bin\Debug\net8.0\Data.Common.pdb
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\Domain.Common\obj\Debug\net8.0\Data.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\Domain.Common\obj\Debug\net8.0\Data.Common.AssemblyInfoInputs.cache
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\Domain.Common\obj\Debug\net8.0\Data.Common.AssemblyInfo.cs
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\Domain.Common\obj\Debug\net8.0\Data.Common.csproj.CoreCompileInputs.cache
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\Domain.Common\obj\Debug\net8.0\Data.Common.sourcelink.json
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\Domain.Common\obj\Debug\net8.0\Data.Common.dll
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\Domain.Common\obj\Debug\net8.0\refint\Data.Common.dll
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\Domain.Common\obj\Debug\net8.0\Data.Common.pdb
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\Domain.Common\obj\Debug\net8.0\ref\Data.Common.dll

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PrivateEnforcement")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3bbcff017a9afed47c412c52ffd5599da6c74918")]
 [assembly: System.Reflection.AssemblyProductAttribute("PrivateEnforcement")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PrivateEnforcement")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

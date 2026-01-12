@@ -453,9 +453,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\VisualStudioProjects\\PrivateEnforcement\\PrivateEnforcement\\PrivateEnforcement.csproj",
-      "projectName": "PrivateEnforcement",
-      "projectPath": "C:\\Users\\User\\VisualStudioProjects\\PrivateEnforcement\\PrivateEnforcement\\PrivateEnforcement.csproj",
+      "projectUniqueName": "C:\\Users\\User\\VisualStudioProjects\\PrivateEnforcement\\PrivateEnforcement\\PrivateEnforcement.API.csproj",
+      "projectName": "PrivateEnforcement.API",
+      "projectPath": "C:\\Users\\User\\VisualStudioProjects\\PrivateEnforcement\\PrivateEnforcement\\PrivateEnforcement.API.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\User\\VisualStudioProjects\\PrivateEnforcement\\PrivateEnforcement\\obj\\",
       "projectStyle": "PackageReference",

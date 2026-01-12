@@ -1,0 +1,6 @@
+@PrivateEnforcement.API_HostAddress = http://localhost:5272
+
+GET {{PrivateEnforcement.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

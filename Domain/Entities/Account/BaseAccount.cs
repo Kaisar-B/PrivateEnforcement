@@ -34,9 +34,4 @@ public abstract class BaseAccount : BaseDomainModel
     ///     Пароль шифровка алгоритм sha1
     /// </summary>
     public string Password { get; set; }
-
-    /// <summary>
-    ///     Был ли удален аккаунт (soft delete filter)
-    /// </summary>
-    public bool IsDeleted { get; set; }
 }

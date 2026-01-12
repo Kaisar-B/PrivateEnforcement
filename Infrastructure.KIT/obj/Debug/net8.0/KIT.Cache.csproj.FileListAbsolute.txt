@@ -1,0 +1,13 @@
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\Infrastructure.KIT\bin\Debug\net8.0\KIT.Cache.deps.json
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\Infrastructure.KIT\bin\Debug\net8.0\KIT.Cache.dll
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\Infrastructure.KIT\bin\Debug\net8.0\KIT.Cache.pdb
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\Infrastructure.KIT\obj\Debug\net8.0\KIT.Cache.csproj.AssemblyReference.cache
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\Infrastructure.KIT\obj\Debug\net8.0\KIT.Cache.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\Infrastructure.KIT\obj\Debug\net8.0\KIT.Cache.AssemblyInfoInputs.cache
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\Infrastructure.KIT\obj\Debug\net8.0\KIT.Cache.AssemblyInfo.cs
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\Infrastructure.KIT\obj\Debug\net8.0\KIT.Cache.csproj.CoreCompileInputs.cache
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\Infrastructure.KIT\obj\Debug\net8.0\KIT.Cache.sourcelink.json
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\Infrastructure.KIT\obj\Debug\net8.0\KIT.Cache.dll
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\Infrastructure.KIT\obj\Debug\net8.0\refint\KIT.Cache.dll
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\Infrastructure.KIT\obj\Debug\net8.0\KIT.Cache.pdb
+C:\Users\User\VisualStudioProjects\PrivateEnforcement\Infrastructure.KIT\obj\Debug\net8.0\ref\KIT.Cache.dll

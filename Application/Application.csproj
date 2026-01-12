@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Administration\Commands\DeleteEnforcement\" />
+    <Folder Include="Administration\Commands\UpdateEnforcement\" />
+    <Folder Include="Administration\Queries\EnforcementList\" />
+    <Folder Include="EnforcementEmployees\Queries\EmployeesList\DTOs\" />
+    <Folder Include="Obligators\Queries\ObligatorDetailedQuery\ObligatorQuery\DTOs\" />
+    <Folder Include="Shared\Errors\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="12.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.22" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<InternalsVisibleTo Include="PrivateEnforcement.IntegrationTests" />
+	</ItemGroup>
+
+</Project>
