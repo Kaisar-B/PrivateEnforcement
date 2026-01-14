@@ -7,12 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Administration\Commands\DeleteEnforcement\" />
-    <Folder Include="Administration\Commands\UpdateEnforcement\" />
-    <Folder Include="Administration\Queries\EnforcementList\" />
+    <Compile Remove="Shared\Errors\**" />
+    <EmbeddedResource Remove="Shared\Errors\**" />
+    <None Remove="Shared\Errors\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="EnforcementEmployees\Queries\EmployeesList\DTOs\" />
     <Folder Include="Obligators\Queries\ObligatorDetailedQuery\ObligatorQuery\DTOs\" />
-    <Folder Include="Shared\Errors\" />
   </ItemGroup>
 
   <ItemGroup>

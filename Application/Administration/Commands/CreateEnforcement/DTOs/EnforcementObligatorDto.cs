@@ -5,6 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Application.Administration.Commands.CreateEnforcement.DTOs;
+
+/// <summary>
+///     DTO that contains information about private enforcement`s direct client (his obligators).
+///     Works as part of main DTO.
+/// </summary>
 public class EnforcementObligatorDto
 {
     public string PassportNumber { get; set; }

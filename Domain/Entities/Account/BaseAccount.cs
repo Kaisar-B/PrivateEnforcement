@@ -34,4 +34,9 @@ public abstract class BaseAccount : BaseDomainModel
     ///     Пароль шифровка алгоритм sha1
     /// </summary>
     public string Password { get; set; }
+
+    /// <summary>
+    ///     Заблокирован ли аккаунт
+    /// </summary>
+    public bool IsBlocked { get; set; }
 }

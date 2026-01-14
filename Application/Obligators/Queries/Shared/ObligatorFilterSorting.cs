@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Application.Obligators.Queries.Shared;
-public class ObligatorSortFilter
+public class ObligatorFilterSorting
 {
     // Filters
     public decimal? MinDebAmount { get; set; }

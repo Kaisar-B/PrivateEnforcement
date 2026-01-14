@@ -32,7 +32,7 @@ internal class ObligatorsListHandler : IObligatorsList
     /// </summary>
     /// <param name="requestData"></param>
     /// <returns></returns>
-    public async Task<Result<List<ObligatorsListDto>>> GetObligatorsAsync(ObligatorSortFilter requestData)
+    public async Task<Result<List<ObligatorsListDto>>> GetObligatorsAsync(ObligatorFilterSorting requestData)
     {
         var filtered = ApplyFilters(requestData, _dbContext.Obligators.AsNoTracking());
         var sorted = ApplySorting(requestData, filtered);
@@ -40,7 +40,7 @@ internal class ObligatorsListHandler : IObligatorsList
         return  ApplyMapping(paged);
     }
 
-    private static IQueryable<ObligatorAccount> ApplyFilters(ObligatorSortFilter requestData, IQueryable<ObligatorAccount> obligatorsQuery)
+    private static IQueryable<ObligatorAccount> ApplyFilters(ObligatorFilterSorting requestData, IQueryable<ObligatorAccount> obligatorsQuery)
     {
         if (requestData.MinDebAmount != null)
         {
@@ -61,7 +61,7 @@ internal class ObligatorsListHandler : IObligatorsList
         return obligatorsQuery;
     }
 
-    private static IQueryable<ObligatorAccount> ApplySorting(ObligatorSortFilter requestData, IQueryable<ObligatorAccount> obligatorsQuery)
+    private static IQueryable<ObligatorAccount> ApplySorting(ObligatorFilterSorting requestData, IQueryable<ObligatorAccount> obligatorsQuery)
     {
         switch (requestData.SortField)
         {
@@ -90,7 +90,7 @@ internal class ObligatorsListHandler : IObligatorsList
         return obligatorsQuery;
     }
 
-    private static async Task<List<ObligatorAccount>> ApplyPaging(ObligatorSortFilter requestData, IQueryable<ObligatorAccount> obligatorsQuery)
+    private static async Task<List<ObligatorAccount>> ApplyPaging(ObligatorFilterSorting requestData, IQueryable<ObligatorAccount> obligatorsQuery)
     {
         var paged = await PaginationExtension.ToPageAsync(obligatorsQuery, new Pagination(requestData.PageNumber, requestData.PageSize));
         return paged.Items;

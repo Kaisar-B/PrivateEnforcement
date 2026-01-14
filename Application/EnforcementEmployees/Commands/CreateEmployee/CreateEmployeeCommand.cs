@@ -9,6 +9,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Application.Employees.Commands.CreateEmployee;
+
+/// <summary>
+///     Implementations of <see cref="ICreateEmployee"> that creates employee data into database.
+/// </summary>
 public class CreateEmployeeCommand : ICreateEmployee
 {
     private readonly DatabaseContext _dbContext;
@@ -33,19 +37,11 @@ public class CreateEmployeeCommand : ICreateEmployee
         try
         {
             await _dbContext.SaveChangesAsync();
-            return new Result<string>()
-            {
-                IsSuccess = true,
-                ResponseMessage = "Работник/и был создан в БД"
-            };
+            return Result<string>.Ok("Данные были успешно созданы");
         }
         catch (Exception ex) 
         {
-            return new Result<string>()
-            {
-                IsSuccess = false,
-                ResponseMessage = ex.Message
-            };
+            return Result<string>.Fail(ex.Message);
         }
     }
 }

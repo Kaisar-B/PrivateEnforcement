@@ -14,5 +14,5 @@ namespace Application.Obligators.Queries.ObligatorsList;
 /// </summary>
 public interface IObligatorsList
 {
-    public Task<Result<List<ObligatorsListDto>>> GetObligatorsAsync(ObligatorSortFilter requestData);
+    public Task<Result<List<ObligatorsListDto>>> GetObligatorsAsync(ObligatorFilterSorting requestData);
 }
