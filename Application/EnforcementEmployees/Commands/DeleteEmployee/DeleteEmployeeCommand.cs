@@ -10,36 +10,56 @@ using Domain.Entities.Account.Enforcement;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.EnforcementEmployees.Commands.DeleteEmployee;
-internal class DeleteEmployeeCommand : IDeleteEmployee
+
+/// <summary>
+///     Command responsible for deleting employees of private enforcement
+///     by their identifiers.
+/// </summary>
+internal sealed class DeleteEmployeeCommand : IDeleteEmployee
 {
     private readonly DatabaseContext _dbContext;
 
+    /// <summary>
+    ///     Initializes a new instance of <see cref="DeleteEmployeeCommand"/>.
+    /// </summary>
+    /// <param name="dbContext">Database context instance.</param>
     public DeleteEmployeeCommand(DatabaseContext dbContext)
     {
         _dbContext = dbContext;
     }
+
+    /// <summary>
+    ///     Deletes employees with the specified identifiers.
+    /// </summary>
+    /// <param name="Ids">
+    ///     List of employee identifiers to be deleted.
+    /// </param>
+    /// <returns>
+    ///     Result object containing information about the deletion operation.
+    /// </returns>
+    /// <summary>
+    ///     Deletes employees using a single database command.
+    /// </summary>
     public async Task<Result<string>> DeleteEmployeesByIdAsync(List<long> Ids)
     {
-        foreach (long id in Ids) 
-        {
-            _dbContext.EnforcementEmployees.Entry(new EnforcementEmployee() { Id=id}).State = EntityState.Deleted;
-        }
+        if (Ids == null || Ids.Count == 0)
+            return Result<string>.Fail("Список идентификаторов пуст.");
+
         try
         {
-            await _dbContext.SaveChangesAsync();
-            return new Result<string>()
-            {
-                IsSuccess = true,
-                ResponseMessage = "Запись была удаленна из БД"
-            };
+            var recordsDeleted = await _dbContext
+                .EnforcementEmployees
+                .Where(e => Ids.Contains(e.Id))
+                .ExecuteDeleteAsync();
+
+            return Result<string>.Ok(
+                $"{recordsDeleted} - записей было удалено из БД");
         }
-        catch (Exception ex) 
+        catch (Exception ex)
         {
-            return new Result<string>()
-            {
-                IsSuccess = false,
-                ResponseMessage = ex.Message
-            };
+            return Result<string>.Fail(
+                "Ошибка при удалении записей из базы данных.");
         }
     }
+
 }

@@ -6,6 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Application.EnforcementEmployees.Commands.DeleteEmployee;
+
+/// <summary>
+///     Interface for deleting provided list of employees
+///     of private enforcement.
+/// </summary>
 public interface IDeleteEmployee
 {
     public Task<Result<string>> DeleteEmployeesByIdAsync(List<long> Ids);
