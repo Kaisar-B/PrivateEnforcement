@@ -13,7 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="EnforcementEmployees\Queries\EmployeesList\DTOs\" />
     <Folder Include="Obligators\Queries\ObligatorDetailedQuery\ObligatorQuery\DTOs\" />
   </ItemGroup>
 

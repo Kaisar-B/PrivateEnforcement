@@ -8,8 +8,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Application.EnforcementEmployees.Queries.EmployeesList.DTOs;
+using Application.Shared.Ordering;
 
 namespace Application.EnforcementEmployees.Queries.EmployeesList;
+
+/// <summary>
+///     Provides functionality for retrieving a filtered and sorted list of enforcement employees.
+/// </summary>
+/// <remarks>
+/// This class builds an Entity Framework query by applying filtering, sorting,
+/// and projection to DTOs before executing the query asynchronously.
+/// </remarks>
 internal class EmployeeListCommand : IEmployeesList
 {
     private readonly DatabaseContext _dbContext;
@@ -19,30 +29,22 @@ internal class EmployeeListCommand : IEmployeesList
         _dbContext = dbContext;
     }
 
-    public async Task<Result<List<EnforcementEmployee>>> GetEmployeesListAsync(EmployeeFilterSort employeeFilterSort)
+    public async Task<Result<List<EnforcementEmployeeDto>>> GetEmployeesListAsync(EmployeeFilterSort employeeFilterSort)
     {
         var domainModels = _dbContext.EnforcementEmployees;
-        var sortedQuery = BuildSorting(employeeFilterSort, domainModels);
-        var filteredQuery = BuildFilter(employeeFilterSort, sortedQuery);
+        var filteredQuery = BuildFilter(employeeFilterSort, domainModels);
+        var sortedQuery = BuildSorting(employeeFilterSort, filteredQuery);
+        
 
         try
         {
-            var result = await filteredQuery.ToListAsync();
-            //todo convert domain model to DTO
-            return new Result<List<EnforcementEmployee>>()
-            {
-                IsSuccess = true,
-                ResponseMessage = "Запрос успешно обработон",
-                ResultData = result
-            };
+            var dtoModel = sortedQuery.Select(x => new EnforcementEmployeeDto() { Id = x.Id, CreatedDate = x.CreationDateTime, PassportNumber = x.PassportNumber, FullName = string.Concat(x.Surname, " ", x.Name), EnforcementEmployerId = x.EnforcementEmployerId, IsBlocked = x.IsBlocked, Login = x.Login });
+            var result = await dtoModel.ToListAsync();
+            return Result<List<EnforcementEmployeeDto>>.Ok(result);
         }
         catch (Exception ex) 
         {
-            return new Result<List<EnforcementEmployee>>()
-            {
-                IsSuccess = false,
-                ResponseMessage = ex.Message,
-            };
+            return Result<List<EnforcementEmployeeDto>>.Fail(ex.Message);
         }
     }
 
@@ -50,52 +52,27 @@ internal class EmployeeListCommand : IEmployeesList
     {
         if(filterSort.SortField == SortEmployeeEnum.ByName)
         {
-            if (filterSort.SortByAscending)
-            {
-                queryable = queryable.OrderBy(x => x.Name);
-                return queryable;
-            }
-            queryable = queryable.OrderByDescending(x => x.Name);
+            queryable = queryable.Sort<EnforcementEmployee, string>(x=>x.Name, filterSort.SortByAscending);
             return queryable;
         }
         if(filterSort.SortField == SortEmployeeEnum.BySurname)
         {
-            if (filterSort.SortByAscending)
-            {
-                queryable = queryable.OrderBy(x => x.Surname);
-                return queryable;
-            }
-            queryable = queryable.OrderByDescending(x => x.Surname);
+            queryable = queryable.Sort<EnforcementEmployee, string>(x => x.Surname, filterSort.SortByAscending);
             return queryable;
         }
         if(filterSort.SortField == SortEmployeeEnum.ByPassportNumber)
         {
-            if (filterSort.SortByAscending)
-            {
-                queryable = queryable.OrderBy(x => x.PassportNumber);
-                return queryable;
-            }
-            queryable = queryable.OrderByDescending(x => x.PassportNumber);
+            queryable = queryable.Sort<EnforcementEmployee, string>(x=>x.PassportNumber, filterSort.SortByAscending);
             return queryable;
         }
         if (filterSort.SortField == SortEmployeeEnum.ByDateTime)
         {
-            if (filterSort.SortByAscending)
-            {
-                queryable = queryable.OrderBy(x => x.CreationDateTime);
-                return queryable;
-            }
-            queryable = queryable.OrderByDescending(x => x.CreationDateTime);
+            queryable = queryable.Sort<EnforcementEmployee, DateTime>(x => x.CreationDateTime, filterSort.SortByAscending);
             return queryable;
         }
         if (filterSort.SortField == SortEmployeeEnum.ById)
         {
-            if (filterSort.SortByAscending)
-            {
-                queryable = queryable.OrderBy(x => x.Id);
-                return queryable;
-            }
-            queryable = queryable.OrderByDescending(x => x.Id);
+            queryable = queryable.Sort<EnforcementEmployee, long>(x => x.Id, filterSort.SortByAscending);
             return queryable;
         }
         return queryable;
