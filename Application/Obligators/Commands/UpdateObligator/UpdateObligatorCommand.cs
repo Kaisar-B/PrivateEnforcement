@@ -1,5 +1,5 @@
 ﻿using Application.Obligators.Commands.UpdateObligator.DTOs;
-using Application.Obligators.Shared.Results;
+using Application.Shared.Results;
 using Domain.DAL;
 using Domain.Entities.Account.Obligator;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +10,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Application.Obligators.Commands.UpdateObligator;
+
+/// <summary>
+///     Command for updating record of obligator
+/// </summary>
 internal class UpdateObligatorCommand : IUpdateObligator
 {
     private readonly DatabaseContext _dbContext;
@@ -19,28 +23,23 @@ internal class UpdateObligatorCommand : IUpdateObligator
         _dbContext = dbContext;
     }
 
-    public async Task<Result<string>> UpdateObligatorAsync(UpdateObligatorDto updateObligatorDto)
+    public async Task<Result<int>> UpdateObligatorAsync(UpdateObligatorDto updateObligatorDto)
     {
-        var dbAccount = await _dbContext.Obligators.Include(x=>x.ObligatorAssets).FirstOrDefaultAsync(x => x.Id == updateObligatorDto.Id);
-        if (dbAccount != null)
+        try
         {
-            UpdateDomainModel(updateObligatorDto, dbAccount);
-            await _dbContext.SaveChangesAsync();
-            return new Result<string>
+            var obligatorAccount = await _dbContext.Obligators.Include(x => x.ObligatorAssets).FirstOrDefaultAsync(x => x.Id == updateObligatorDto.Id);
+            if (obligatorAccount != null)
             {
-                IsSuccess = true,
-                Message = "Не удалось обновить запись"
-            };
+                UpdateDomainModel(updateObligatorDto, obligatorAccount);
+                var rowsUpdated = await _dbContext.SaveChangesAsync();
+                return Result<int>.Ok(rowsUpdated);
+            }
+            return Result<int>.Fail("Не был найден аккаунт должника для обновления с указанным id"); 
         }
-        else
+        catch(Exception ex)
         {
-            return new Result<string>
-            {
-                IsSuccess = false,
-                Message = "Обязатель с указанным Id не найден"
-            };
+            return Result<int>.Fail(ex.Message);
         }
-        
     }
 
     private void UpdateDomainModel(UpdateObligatorDto updateObligatorDto, ObligatorAccount dbAccount)
@@ -61,7 +60,7 @@ internal class UpdateObligatorCommand : IUpdateObligator
         {
             dbAccount.Region = updateObligatorDto.Region;
         }
-        if (updateObligatorDto.ObligatorAssets.Any())
+        if (updateObligatorDto.ObligatorAssets != null && updateObligatorDto.ObligatorAssets.Any())
         {
             var updateIds = updateObligatorDto.ObligatorAssets.Select(x=> x.Id).ToHashSet();
 

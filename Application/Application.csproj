@@ -13,7 +13,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Obligators\Queries\ObligatorDetailedQuery\ObligatorQuery\DTOs\" />
+    <Folder Include="ObligatorAssets\Commands\CreateObligatorAsset\DTOs\" />
+    <Folder Include="ObligatorAssets\Commands\CreateObligatorAsset\Validators\" />
+    <Folder Include="ObligatorAssets\Commands\DeleteObligatorAsset\DTOs\" />
+    <Folder Include="ObligatorAssets\Commands\DeleteObligatorAsset\Validators\" />
+    <Folder Include="ObligatorAssets\Commands\UpdateObligatorAsset\DTOs\" />
+    <Folder Include="ObligatorAssets\Commands\UpdateObligatorAsset\Validators\" />
+    <Folder Include="ObligatorAssets\Queries\DTOs\" />
+    <Folder Include="ObligatorAssets\Queries\Validators\" />
   </ItemGroup>
 
   <ItemGroup>

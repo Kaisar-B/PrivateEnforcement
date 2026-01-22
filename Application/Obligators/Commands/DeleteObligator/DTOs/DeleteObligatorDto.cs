@@ -5,6 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Application.Obligators.Commands.DeleteObligator.DTOs;
+
+/// <summary>
+///     DTO model that contains unique (alternative keys) that allows 
+///     uniquely identify row in DB and delete it.
+/// </summary>
 public class DeleteObligatorDto
 {
     public long? Id { get; set; }
