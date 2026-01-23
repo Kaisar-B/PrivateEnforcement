@@ -7,16 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ObligatorAssets\Commands\DeleteObligatorAsset\DTOs\**" />
+    <Compile Remove="ObligatorAssets\Commands\DeleteObligatorAsset\Validators\**" />
     <Compile Remove="Shared\Errors\**" />
+    <EmbeddedResource Remove="ObligatorAssets\Commands\DeleteObligatorAsset\DTOs\**" />
+    <EmbeddedResource Remove="ObligatorAssets\Commands\DeleteObligatorAsset\Validators\**" />
     <EmbeddedResource Remove="Shared\Errors\**" />
+    <None Remove="ObligatorAssets\Commands\DeleteObligatorAsset\DTOs\**" />
+    <None Remove="ObligatorAssets\Commands\DeleteObligatorAsset\Validators\**" />
     <None Remove="Shared\Errors\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ObligatorAssets\Commands\CreateObligatorAsset\DTOs\" />
-    <Folder Include="ObligatorAssets\Commands\CreateObligatorAsset\Validators\" />
-    <Folder Include="ObligatorAssets\Commands\DeleteObligatorAsset\DTOs\" />
-    <Folder Include="ObligatorAssets\Commands\DeleteObligatorAsset\Validators\" />
     <Folder Include="ObligatorAssets\Commands\UpdateObligatorAsset\DTOs\" />
     <Folder Include="ObligatorAssets\Commands\UpdateObligatorAsset\Validators\" />
     <Folder Include="ObligatorAssets\Queries\DTOs\" />
