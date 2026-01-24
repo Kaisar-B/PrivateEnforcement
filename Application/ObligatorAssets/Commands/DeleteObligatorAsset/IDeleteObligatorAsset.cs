@@ -10,7 +10,7 @@ namespace Application.ObligatorAssets.Commands.DeleteObligatorAsset;
 /// <summary>
 ///     Interface for deleting obligator assets record in db
 /// </summary>
-public interface IDeleteObligatorAssetCommand
+public interface IDeleteObligatorAsset
 {
-    public Task<Result<Unit>> DeleteObligatorAssetAsync(long[] assetId);
+    public Task<Result<(int deleted, int unmatched)>> DeleteObligatorAssetAsync(long[] assetId);
 }

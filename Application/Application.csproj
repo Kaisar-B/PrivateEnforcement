@@ -19,13 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ObligatorAssets\Commands\UpdateObligatorAsset\DTOs\" />
-    <Folder Include="ObligatorAssets\Commands\UpdateObligatorAsset\Validators\" />
-    <Folder Include="ObligatorAssets\Queries\DTOs\" />
-    <Folder Include="ObligatorAssets\Queries\Validators\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="FluentValidation" Version="12.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.22" />
   </ItemGroup>

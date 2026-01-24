@@ -19,7 +19,7 @@ namespace Application.Obligators.Queries.ObligatorsList;
 /// </summary>
 internal class ObligatorsListHandler : IObligatorsList
 {
-    private DatabaseContext _dbContext;
+    private readonly DatabaseContext _dbContext;
 
     public ObligatorsListHandler(DatabaseContext dbContext)
     {
