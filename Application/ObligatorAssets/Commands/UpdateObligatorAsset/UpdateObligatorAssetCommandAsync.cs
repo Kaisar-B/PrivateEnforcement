@@ -14,10 +14,10 @@ namespace Application.ObligatorAssets.Commands.UpdateObligatorAsset;
 /// <summary>
 ///     Command for updating obligator assets record.
 /// </summary>
-internal class UpdateObligatorCommandAsync : IUpdateObligator
+internal class UpdateObligatorAssetCommandAsync : IUpdateObligatorAsset
 {
     private readonly DatabaseContext _dbContext;
-    public UpdateObligatorCommandAsync(DatabaseContext dbContext)
+    public UpdateObligatorAssetCommandAsync(DatabaseContext dbContext)
     {
         _dbContext = dbContext;
     }

@@ -13,9 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateEnforcement.Identity
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateEnforcement.UnitTests", "PrivateEnforcement.UnitTests\PrivateEnforcement.UnitTests.csproj", "{2E41D591-1F44-4FB6-A2A2-A2FA89C5CD22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateEnforcement.IntegrationTests", "PrivateEnforcement.IntegrationTests\PrivateEnforcement.IntegrationTests.csproj", "{1C560B2F-9F5D-4F99-A78C-EAA4AC68D701}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateEnforcement.IntegrationTests.API", "PrivateEnforcement.IntegrationTests\PrivateEnforcement.IntegrationTests.API.csproj", "{1C560B2F-9F5D-4F99-A78C-EAA4AC68D701}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateEnforcement.API", "PrivateEnforcement.API\PrivateEnforcement.API.csproj", "{19BCB9BD-5FDF-F3C9-004E-E7A9C9BE979B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateEnforcement.IntegrationTests.DB", "PrivateEnforcement.IntegrationTests.DB\PrivateEnforcement.IntegrationTests.DB.csproj", "{0F9CF59A-09EF-4CB8-A289-AF5CB0A3FDFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{19BCB9BD-5FDF-F3C9-004E-E7A9C9BE979B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19BCB9BD-5FDF-F3C9-004E-E7A9C9BE979B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19BCB9BD-5FDF-F3C9-004E-E7A9C9BE979B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F9CF59A-09EF-4CB8-A289-AF5CB0A3FDFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F9CF59A-09EF-4CB8-A289-AF5CB0A3FDFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F9CF59A-09EF-4CB8-A289-AF5CB0A3FDFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F9CF59A-09EF-4CB8-A289-AF5CB0A3FDFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

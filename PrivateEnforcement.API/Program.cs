@@ -1,4 +1,7 @@
 using Serilog;
+using PrivateEnforcement.API.SetUp;
+using Domain.DAL;
+using Microsoft.EntityFrameworkCore;
 
 namespace PrivateEnforcement.API
 {
@@ -8,6 +11,11 @@ namespace PrivateEnforcement.API
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddDbContext<DatabaseContext>(opts =>
+            {
+                opts.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnectionString"));
+            });
+            builder.Services.RegisterApplicationServices();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

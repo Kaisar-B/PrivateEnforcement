@@ -10,7 +10,7 @@ namespace Application.ObligatorAssets.Commands.UpdateObligatorAsset;
 /// <summary>
 ///     Interface for updating obligator assets record.
 /// </summary>
-public interface IUpdateObligator
+public interface IUpdateObligatorAsset
 {
     public Task<Result<string>> UpdateObligatorAssetCommand(ObligatorAssetsDto dto);
 }
