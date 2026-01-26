@@ -15,7 +15,7 @@ public class ObligatorAccount : BaseAccount
     /// <summary>
     ///     Сумма долга
     /// </summary>
-    public decimal DebtAmount { get; set; }
+    public decimal? DebtAmount { get; set; }
 
     /// <summary>
     ///     Номер контракта по задолженности

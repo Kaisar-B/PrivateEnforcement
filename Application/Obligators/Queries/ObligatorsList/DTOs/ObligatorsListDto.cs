@@ -10,7 +10,7 @@ public record ObligatorsListDto
     public long ObligatorId { get; set; }
     public DateTime CreationDateTime { get; set; }
     public bool IsDeleted { get; set; }
-    public decimal DebtAmount {  get; set; }
+    public decimal? DebtAmount {  get; set; }
     public string ContractNumber { get; set; }
     public ICollection<ObligatorAssetsModel> Assets {  get; set; }
 }

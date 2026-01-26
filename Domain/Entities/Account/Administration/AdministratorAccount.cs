@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 namespace Domain.Entities.Account.Administration;
 public class AdministratorAccount : BaseAccount
 {
-    public long TelegramId { get; set; }
+    public long? TelegramId { get; set; }
 }

@@ -56,7 +56,7 @@ public class ObligatorController : ControllerBase
         return BadRequest();
     }
 
-    [HttpDelete]
+    [HttpDelete("group/")]
     public async Task<ActionResult> DeleteObligatorAsync([FromBody] DeleteObligatorDto dto)
     {
         Result<int> result = await _delete.DeleteObligatorAsync(dto);

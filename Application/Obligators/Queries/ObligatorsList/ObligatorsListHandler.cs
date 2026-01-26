@@ -81,7 +81,7 @@ internal class ObligatorsListHandler : IObligatorsList
                 obligatorsQuery = OrderingExtension.Sort<ObligatorAccount, string>(obligatorsQuery, selector => selector.Surname, requestData.SortByAscending);
                 break;
             case SortObligatorEnum.ByDebt:
-                obligatorsQuery = OrderingExtension.Sort<ObligatorAccount, decimal>(obligatorsQuery, selector => selector.DebtAmount, requestData.SortByAscending);
+                obligatorsQuery = OrderingExtension.Sort<ObligatorAccount, decimal?>(obligatorsQuery, selector => selector.DebtAmount, requestData.SortByAscending);
                 break;
             case SortObligatorEnum.ByContractNumber:
                 obligatorsQuery = OrderingExtension.Sort<ObligatorAccount, string>(obligatorsQuery, selector => selector.ObligationContractNumber, requestData.SortByAscending);

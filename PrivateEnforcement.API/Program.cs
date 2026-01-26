@@ -17,6 +17,11 @@ namespace PrivateEnforcement.API
             });
             builder.Services.RegisterApplicationServices();
 
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.CustomSchemaIds(type => type.FullName);
+            });
+
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -30,6 +35,7 @@ namespace PrivateEnforcement.API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            app.UseDeveloperExceptionPage();
 
             app.UseHttpsRedirection();
 
