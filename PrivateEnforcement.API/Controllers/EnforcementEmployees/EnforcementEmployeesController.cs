@@ -8,9 +8,11 @@ using Application.EnforcementEmployees.Queries.EmployeesList;
 using Application.EnforcementEmployees.Queries.EmployeesList.DTOs;
 using Application.EnforcementEmployees.Queries;
 using Application.EnforcementEmployees.Queries.EmployeesList.Shared;
-using EnforcementEmployeeDtoList = Application.EnforcementEmployees.Queries.EmployeesList.DTOs.EnforcementEmployeeDto;
 using Application.Shared.Results;
 using Microsoft.AspNetCore.Mvc;
+using FluentValidation;
+using FluentValidation.Results;
+using Application.EnforcementEmployees.Commands.CreateEmployee.Validators;
 
 namespace PrivateEnforcement.API.Controllers.EnforcementEmployees;
 
@@ -20,25 +22,35 @@ namespace PrivateEnforcement.API.Controllers.EnforcementEmployees;
 ///     CRUD operations on Enforcment employees.
 /// </summary>
 [ApiController]
-[Route("[controller]")]
+[Route("api/enforcement-employees")]
 public class EnforcementEmployeesController : ControllerBase
 {
     private readonly ICreateEmployee _create;
     private readonly IDeleteEmployee _delete;
     private readonly IUpdateEmployee _update;
     private readonly IEmployeesList _list;
+    private readonly IValidator<List<CreateEnforcementEmployeeRequestDto>> _createValidator;
+    private readonly IValidator<List<UpdateEnforcementEmployeeRequestDto>> _updateValidator;
 
-    public EnforcementEmployeesController(ICreateEmployee create, IDeleteEmployee delete, IUpdateEmployee update, IEmployeesList list)
+    public EnforcementEmployeesController(ICreateEmployee create, IDeleteEmployee delete, IUpdateEmployee update, IEmployeesList list, IValidator<List<CreateEnforcementEmployeeRequestDto>> createValidator, IValidator<List<UpdateEnforcementEmployeeRequestDto>> updateValidator)
     {
         _create = create;
         _delete = delete;
         _update = update;
         _list = list;
+        _createValidator = createValidator;
+        _updateValidator = updateValidator;
     }
 
-    [HttpPost]
-    public async Task<ActionResult> CreateEnforcementEmployee([FromBody] List<CreateEmployeeDto> dto)
+    [HttpPost("create")]
+    public async Task<ActionResult> CreateEnforcementEmployee([FromBody] List<CreateEnforcementEmployeeRequestDto> dto)
     {
+        ValidationResult validationResult = await _createValidator.ValidateAsync(dto);
+        if (!validationResult.IsValid)
+        {
+            return UnprocessableEntity(validationResult.ToDictionary());
+        }
+
         Result<string> result = await _create.CreateEmployeesAsync(dto);
         if (result.IsSuccess)
         {
@@ -47,7 +59,7 @@ public class EnforcementEmployeesController : ControllerBase
         return BadRequest();
     }
 
-    [HttpDelete]
+    [HttpDelete("delete")]
     public async Task<ActionResult> DeleteEnforcementEmployee([FromBody] List<long> dto)
     {
         Result<string> result = await _delete.DeleteEmployeesByIdAsync(dto);
@@ -58,9 +70,15 @@ public class EnforcementEmployeesController : ControllerBase
         return BadRequest();
     }
 
-    [HttpPatch]
-    public async Task<ActionResult> UpdateEnforcementEmployee([FromBody] List<UpdateEmployeeDto> dto)
+    [HttpPatch("update")]
+    public async Task<ActionResult> UpdateEnforcementEmployee([FromBody] List<UpdateEnforcementEmployeeRequestDto> dto)
     {
+        ValidationResult validationResult = await _updateValidator.ValidateAsync(dto);
+        if (!validationResult.IsValid) 
+        {
+            return UnprocessableEntity(validationResult.ToDictionary());
+        }
+
         Result<string> result = await _update.UpdateEmployeesAsync(dto);
         if (result.IsSuccess)
         {
@@ -69,10 +87,10 @@ public class EnforcementEmployeesController : ControllerBase
         return BadRequest();
     }
 
-    [HttpGet]
+    [HttpGet("query")]
     public async Task<ActionResult> QueryEnforcementEmployee([FromQuery] EmployeeFilterSort dto)
     {
-        Result<List<EnforcementEmployeeDtoList>> result = await _list.GetEmployeesListAsync(dto);
+        Result<List<QueryEnforcementEmployeeResponseDto>> result = await _list.GetEmployeesListAsync(dto);
         if (result.IsSuccess) 
         {
             return Ok(result.ResultData);

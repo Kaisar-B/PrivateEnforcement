@@ -21,7 +21,7 @@ public class CreateEmployeeCommand : ICreateEmployee
     {
         _dbContext = dbContext;
     }
-    public async Task<Result<string>> CreateEmployeesAsync(List<CreateEmployeeDto> dto)
+    public async Task<Result<string>> CreateEmployeesAsync(List<CreateEnforcementEmployeeRequestDto> dto)
     {
         var domainModels = dto.Select(x =>
             new EnforcementEmployee()
@@ -30,7 +30,9 @@ public class CreateEmployeeCommand : ICreateEmployee
                 Name = x.Name,
                 Surname = x.Surname,
                 Login = x.Login,
-                Position = x.Position
+                Position = x.Position,
+                Password = x.Password,
+                EnforcementEmployerId = x.EnforcementEmployerId
             });
         _dbContext.EnforcementEmployees.AddRange(domainModels);
 

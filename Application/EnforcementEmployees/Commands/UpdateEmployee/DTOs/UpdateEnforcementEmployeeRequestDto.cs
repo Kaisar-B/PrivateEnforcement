@@ -8,7 +8,7 @@ namespace Application.EnforcementEmployees.Commands.UpdateEmployee.DTOs;
 /// <summary>
 ///     Main DTO that encapsulates data for update.
 /// </summary>
-public class UpdateEmployeeDto
+public class UpdateEnforcementEmployeeRequestDto
 {
     public long Id { get; set; }
     public string? PassportNumber { get; set; }

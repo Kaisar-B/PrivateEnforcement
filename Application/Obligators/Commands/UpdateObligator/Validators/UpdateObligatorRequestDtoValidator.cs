@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Application.Obligators.Commands.UpdateObligator.Validators;
-internal class UpdateObligatorDtoValidator : AbstractValidator<UpdateObligatorDto>
+internal class UpdateObligatorRequestDtoValidator : AbstractValidator<UpdateObligatorRequestDto>
 {
-    public UpdateObligatorDtoValidator()
+    public UpdateObligatorRequestDtoValidator()
     {
         RuleFor(x => x.Id)
             .GreaterThan(0)

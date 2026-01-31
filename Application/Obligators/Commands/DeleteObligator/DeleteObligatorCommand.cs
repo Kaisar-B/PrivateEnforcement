@@ -37,7 +37,7 @@ public class DeleteObligatorCommand : IDeleteObligator
     ///     A <see cref="Result{T}"/> containing the number of deleted rows,
     ///     or an error message if no matching record is found.
     /// </returns>
-    public async Task<Result<int>> DeleteObligatorAsync(DeleteObligatorDto dto)
+    public async Task<Result<int>> DeleteObligatorAsync(DeleteObligatorRequestDto dto)
     {
         var deleteObligator = await DeleteObligatorByModel(dto);
         if (deleteObligator != null) 
@@ -70,7 +70,7 @@ public class DeleteObligatorCommand : IDeleteObligator
         return Result<int>.Fail("Запись для удаления по указанным параметрам не была найдена в БД");
     }
 
-    private async Task<ObligatorAccount?> DeleteObligatorByModel(DeleteObligatorDto dto) 
+    private async Task<ObligatorAccount?> DeleteObligatorByModel(DeleteObligatorRequestDto dto) 
     {
         if(dto.Id != null)
         {

@@ -20,5 +20,5 @@ public interface IEmployeesList
     /// </summary>
     /// <param name="employeeFilterSort"></param>
     /// <returns>List of employees, or fail with message</returns>
-    public Task<Result<List<EnforcementEmployeeDto>>> GetEmployeesListAsync(EmployeeFilterSort employeeFilterSort);
+    public Task<Result<List<QueryEnforcementEmployeeResponseDto>>> GetEmployeesListAsync(EmployeeFilterSort employeeFilterSort);
 }

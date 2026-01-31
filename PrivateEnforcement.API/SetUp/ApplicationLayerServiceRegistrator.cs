@@ -1,20 +1,36 @@
 ﻿using Application.Administration.Commands.CreateEnforcement;
+using Application.Administration.Commands.CreateEnforcement.DTOs;
+using Application.Administration.Commands.CreateEnforcement.Validators;
 using Application.Administration.Commands.DeleteEnforcement.Block;
 using Application.Administration.Commands.UpdateEnforcement;
+using Application.Administration.Commands.UpdateEnforcement.Validators;
 using Application.Administration.Queries.EnforcementList;
+using Application.Administration.Queries.EnforcementList.DTOs;
 using Application.Employees.Commands.CreateEmployee;
+using Application.Employees.Commands.CreateEmployee.DTOs;
+using Application.EnforcementEmployees.Commands.CreateEmployee.Validators;
 using Application.EnforcementEmployees.Commands.DeleteEmployee;
 using Application.EnforcementEmployees.Commands.UpdateEmployee;
+using Application.EnforcementEmployees.Commands.UpdateEmployee.DTOs;
+using Application.EnforcementEmployees.Commands.UpdateEmployee.Validators;
 using Application.EnforcementEmployees.Queries.EmployeesList;
 using Application.ObligatorAssets.Commands.CreateObligatorAsset;
+using Application.ObligatorAssets.Commands.CreateObligatorAsset.DTOs;
+using Application.ObligatorAssets.Commands.CreateObligatorAsset.Validators;
 using Application.ObligatorAssets.Commands.DeleteObligatorAsset;
 using Application.ObligatorAssets.Commands.UpdateObligatorAsset;
+using Application.ObligatorAssets.Commands.UpdateObligatorAsset.DTOs;
+using Application.ObligatorAssets.Commands.UpdateObligatorAsset.Validators;
 using Application.ObligatorAssets.Queries;
 using Application.Obligators.Commands.CreateObligator;
+using Application.Obligators.Commands.CreateObligator.DTOs;
+using Application.Obligators.Commands.CreateObligator.Validators;
 using Application.Obligators.Commands.DeleteObligator;
 using Application.Obligators.Commands.UpdateObligator;
+using Application.Obligators.Commands.UpdateObligator.DTOs;
+using Application.Obligators.Commands.UpdateObligator.Validators;
 using Application.Obligators.Queries.ObligatorsList;
-using Domain.DAL;
+using FluentValidation;
 
 namespace PrivateEnforcement.API.SetUp;
 
@@ -50,6 +66,22 @@ public static class ApplicationLayerServiceRegistrator
         services.AddScoped<IDeleteObligator,  DeleteObligatorCommand>();
         services.AddScoped<IUpdateObligator, UpdateObligatorCommand>();
         services.AddScoped<IObligatorsList, ObligatorsListHandler>();
+
+        // Validators for Administration
+        services.AddScoped<IValidator<CreateEnforcementRequestDto>, CreateEnforcementRequestDtoValidator>();
+        services.AddScoped<IValidator<UpdateEnforcementRequestDto>, UpdateEnforcementRequestDtoValidator>();
+
+        // Validators for Enforcement Employee
+        services.AddScoped<IValidator<List<CreateEnforcementEmployeeRequestDto>>, CreateEnforcementEmployeeListRequestDtoValidator>();
+        services.AddScoped<IValidator<List<UpdateEnforcementEmployeeRequestDto>>, UpdateEnforcementEmployeeListRequestDtoValidator>(); //todo : it must be fluent validation based on array, as above.
+
+        // Validators for Obligator Asset
+        services.AddScoped<IValidator<List<CreateObligatorAssetRequestDto>>, CreateObligatorAssetListRequestDtoValidator>();
+        services.AddScoped<IValidator<UpdateObligatorAssetRequestDto>, UpdateObligatorAssetRequestDtoValidator>();
+
+        // Validators for Obligator
+        services.AddScoped<IValidator<CreateObligatorRequestDto>, CreateObligatorRequestDtoValidator>();
+        services.AddScoped<IValidator<UpdateObligatorRequestDto>, UpdateObligatorRequestDtoValidator>();
 
     }
 }

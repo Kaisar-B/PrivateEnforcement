@@ -1,4 +1,4 @@
-﻿using Application.Obligators.Commands.UpdateObligator.DTOs;
+﻿using Application.ObligatorAssets.Commands.UpdateObligatorAsset.DTOs;
 using Application.Shared.Results;
 using Domain.DAL;
 using Domain.Entities.Account.Obligator;
@@ -22,22 +22,22 @@ internal class UpdateObligatorAssetCommandAsync : IUpdateObligatorAsset
         _dbContext = dbContext;
     }
 
-    public async Task<Result<string>> UpdateObligatorAssetCommand(ObligatorAssetsDto dto)
+    public async Task<Result<string>> UpdateObligatorAssetCommand(UpdateObligatorAssetRequestDto dto)
     {
         var domainToUpdate = await _dbContext.ObligatorsAssets.FirstOrDefaultAsync(x => x.Id == dto.Id);
         if(domainToUpdate != null)
         {
-            if(dto.AssetValue.HasValue)
+            if(dto.EstimatedAssetValue.HasValue)
             {
-                domainToUpdate.AssetValue = dto.AssetValue.Value;
+                domainToUpdate.AssetValue = dto.EstimatedAssetValue.Value;
             }
             if (!string.IsNullOrEmpty(dto.AssetName))
             {
                 domainToUpdate.AssetName = dto.AssetName;
             }
-            if (!string.IsNullOrEmpty(dto.DescriptionOfAsset))
+            if (!string.IsNullOrEmpty(dto.AssetDescription))
             {
-                domainToUpdate.DescriptionOfAsset = dto.DescriptionOfAsset;
+                domainToUpdate.DescriptionOfAsset = dto.AssetDescription;
             }
             try
             {

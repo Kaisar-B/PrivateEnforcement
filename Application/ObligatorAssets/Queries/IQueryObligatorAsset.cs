@@ -13,5 +13,5 @@ namespace Application.ObligatorAssets.Queries;
 /// </summary>
 public interface IQueryObligatorAsset
 {
-    public Task<Result<List<ObligatorAssetDto>>> QueryObligatorsById(long[] ids);
+    public Task<Result<List<QueryObligatorAssetResponseDto>>> QueryObligatorsById(long[] ids);
 }

@@ -33,6 +33,13 @@ public class DatabaseContext : DbContext
         modelBuilder.ApplyConfiguration(new EnforcementEmployeeEntityTypeConfiguration());
         modelBuilder.ApplyConfiguration(new ObligatorAccountEntityTypeConfiguration());
         modelBuilder.ApplyConfiguration(new ObligatorAssetEntityTypeConfiguration());
+
+        // Global query filters that allow us soft-delete functionality.
+        modelBuilder.Entity<AdministratorAccount>().HasQueryFilter(x => !x.IsDeleted);
+        modelBuilder.Entity<EnforcementAccount>().HasQueryFilter(x => !x.IsDeleted);
+        modelBuilder.Entity<EnforcementEmployee>().HasQueryFilter(x=>!x.IsDeleted);
+        modelBuilder.Entity<ObligatorAccount>().HasQueryFilter(x => !x.IsDeleted);
+        modelBuilder.Entity<ObligatorAsset>().HasQueryFilter(x => !x.IsDeleted);
     }
 
 }

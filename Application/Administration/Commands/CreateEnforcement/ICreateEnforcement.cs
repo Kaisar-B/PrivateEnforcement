@@ -12,5 +12,5 @@ public interface ICreateEnforcement
     /// <summary>
     ///     Application-level contract for creating a new enforcement entity.
     /// </summary>
-    public Task<Result<Unit>> CreateEnforcementAsync(EnforcementCreateDto enforcementDto);
+    public Task<Result<Unit>> CreateEnforcementAsync(CreateEnforcementRequestDto enforcementDto);
 }

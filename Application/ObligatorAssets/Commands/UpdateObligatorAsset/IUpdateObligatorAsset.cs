@@ -1,4 +1,4 @@
-﻿using Application.Obligators.Commands.UpdateObligator.DTOs;
+﻿using Application.ObligatorAssets.Commands.UpdateObligatorAsset.DTOs;
 using Application.Shared.Results;
 using System;
 using System.Collections.Generic;
@@ -12,5 +12,5 @@ namespace Application.ObligatorAssets.Commands.UpdateObligatorAsset;
 /// </summary>
 public interface IUpdateObligatorAsset
 {
-    public Task<Result<string>> UpdateObligatorAssetCommand(ObligatorAssetsDto dto);
+    public Task<Result<string>> UpdateObligatorAssetCommand(UpdateObligatorAssetRequestDto dto);
 }

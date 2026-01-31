@@ -29,22 +29,22 @@ internal class EmployeeListCommand : IEmployeesList
         _dbContext = dbContext;
     }
 
-    public async Task<Result<List<EnforcementEmployeeDto>>> GetEmployeesListAsync(EmployeeFilterSort employeeFilterSort)
+    public async Task<Result<List<QueryEnforcementEmployeeResponseDto>>> GetEmployeesListAsync(EmployeeFilterSort employeeFilterSort)
     {
-        var domainModels = _dbContext.EnforcementEmployees;
+        var domainModels = _dbContext.EnforcementEmployees.Where(x=>x.EnforcementEmployerId== employeeFilterSort.EnforcementEmployerId);
         var filteredQuery = BuildFilter(employeeFilterSort, domainModels);
         var sortedQuery = BuildSorting(employeeFilterSort, filteredQuery);
         
 
         try
         {
-            var dtoModel = sortedQuery.Select(x => new EnforcementEmployeeDto() { Id = x.Id, CreatedDate = x.CreationDateTime, PassportNumber = x.PassportNumber, FullName = string.Concat(x.Surname, " ", x.Name), EnforcementEmployerId = x.EnforcementEmployerId, IsBlocked = x.IsBlocked, Login = x.Login });
+            var dtoModel = sortedQuery.Select(x => new QueryEnforcementEmployeeResponseDto() { Id = x.Id, CreatedDate = x.CreationDateTime, PassportNumber = x.PassportNumber, FullName = string.Concat(x.Surname, " ", x.Name), EnforcementEmployerId = x.EnforcementEmployerId, IsBlocked = x.IsBlocked, Login = x.Login });
             var result = await dtoModel.ToListAsync();
-            return Result<List<EnforcementEmployeeDto>>.Ok(result);
+            return Result<List<QueryEnforcementEmployeeResponseDto>>.Ok(result);
         }
         catch (Exception ex) 
         {
-            return Result<List<EnforcementEmployeeDto>>.Fail(ex.Message);
+            return Result<List<QueryEnforcementEmployeeResponseDto>>.Fail(ex.Message);
         }
     }
 

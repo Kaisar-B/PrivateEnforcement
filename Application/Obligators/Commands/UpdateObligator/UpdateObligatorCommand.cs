@@ -23,7 +23,7 @@ internal class UpdateObligatorCommand : IUpdateObligator
         _dbContext = dbContext;
     }
 
-    public async Task<Result<int>> UpdateObligatorAsync(UpdateObligatorDto updateObligatorDto)
+    public async Task<Result<int>> UpdateObligatorAsync(UpdateObligatorRequestDto updateObligatorDto)
     {
         try
         {
@@ -42,7 +42,7 @@ internal class UpdateObligatorCommand : IUpdateObligator
         }
     }
 
-    private void UpdateDomainModel(UpdateObligatorDto updateObligatorDto, ObligatorAccount dbAccount)
+    private void UpdateDomainModel(UpdateObligatorRequestDto updateObligatorDto, ObligatorAccount dbAccount)
     {
         if(updateObligatorDto.DebtAmount != null)
         {

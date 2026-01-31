@@ -9,8 +9,23 @@ namespace Application.Obligators.Commands.CreateObligator.DTOs;
 /// <summary>
 ///     DTO for creating new obligator
 /// </summary>
-public class NewObligatorDto
+public class CreateObligatorRequestDto
 {
+    /// <summary>
+    ///     Name of obligator
+    /// </summary>
+    public string Name { get; set; }
+
+    /// <summary>
+    ///     Surname of obligator.
+    /// </summary>
+    public string Surname { get; set; }
+
+    /// <summary>
+    ///     Passport number of obligator.
+    /// </summary>
+    public string PassportNumber { get; set; }
+
     /// <summary>
     ///     Debt amount of obligator
     /// </summary>

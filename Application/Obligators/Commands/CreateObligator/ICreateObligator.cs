@@ -13,5 +13,5 @@ namespace Application.Obligators.Commands.CreateObligator;
 /// </summary>
 public interface ICreateObligator
 {
-    public Task<Result<int>> CreateObligatorAsync(NewObligatorDto newObligator);
+    public Task<Result<int>> CreateObligatorAsync(CreateObligatorRequestDto newObligator);
 }

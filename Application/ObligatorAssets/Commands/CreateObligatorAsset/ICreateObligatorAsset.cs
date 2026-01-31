@@ -13,5 +13,5 @@ namespace Application.ObligatorAssets.Commands.CreateObligatorAsset;
 /// </summary>
 public interface ICreateObligatorAsset
 {
-    public Task<Result<Unit>> CreateNewObligatorAssetCommandAsync(ObligatorAssetDto[] dto);
+    public Task<Result<Unit>> CreateNewObligatorAssetCommandAsync(List<CreateObligatorAssetRequestDto> dto);
 }

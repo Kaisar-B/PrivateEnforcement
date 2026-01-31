@@ -18,7 +18,7 @@ namespace Application.Administration.Queries.EnforcementList
     /// </summary>
     /// <remarks>
     ///     Applies the filter and sort criteria specified in <see cref="EnforcementFilterSorting"/>.
-    ///     Returns a list of <see cref="EnforcementDto"/> wrapped in a <see cref="Result{T}"/> object.
+    ///     Returns a list of <see cref="QueryEnforcementResponseDto"/> wrapped in a <see cref="Result{T}"/> object.
     /// </remarks>
 
     internal class EnforcementListCommand : IEnforcementList
@@ -30,7 +30,7 @@ namespace Application.Administration.Queries.EnforcementList
             _dbContext = dbContext;
         }
 
-        public async Task<Result<List<EnforcementDto>>> QueryEnforcementListCommandAsync(EnforcementFilterSorting enforcementFilterSorting)
+        public async Task<Result<List<QueryEnforcementResponseDto>>> QueryEnforcementListCommandAsync(EnforcementFilterSorting enforcementFilterSorting)
         {
             var enforcementAccounts = _dbContext.Enforcements;
             var query = ApplyFilter(enforcementAccounts, enforcementFilterSorting);
@@ -39,9 +39,9 @@ namespace Application.Administration.Queries.EnforcementList
             var entities = await query.AsNoTracking().ToListAsync();
             if (entities.Any()) 
             {
-                return Result<List<EnforcementDto>>.Ok(ApplyMappingToDto(entities.ToList()));
+                return Result<List<QueryEnforcementResponseDto>>.Ok(ApplyMappingToDto(entities.ToList()));
             }
-            return Result<List<EnforcementDto>>.Fail("Не было найденно ни одной записи по данным параметрам");
+            return Result<List<QueryEnforcementResponseDto>>.Fail("Не было найденно ни одной записи по данным параметрам");
         }
 
         private static IQueryable<EnforcementAccount> ApplyFilter(IQueryable<EnforcementAccount> enforcementAccounts, EnforcementFilterSorting dto)
@@ -88,9 +88,9 @@ namespace Application.Administration.Queries.EnforcementList
             return enforcementAccounts;
         }
 
-        public static List<EnforcementDto> ApplyMappingToDto(List<EnforcementAccount> enforcementAccounts)
+        public static List<QueryEnforcementResponseDto> ApplyMappingToDto(List<EnforcementAccount> enforcementAccounts)
         {
-            return enforcementAccounts.Select(x => new EnforcementDto() { EnforcementName = x.EnforcementName, LicenseNumber = x.LicenseNumber, City = x.City, Country = x.Country }).ToList();
+            return enforcementAccounts.Select(x => new QueryEnforcementResponseDto() { EnforcementName = x.EnforcementName, LicenseNumber = x.LicenseNumber, City = x.City, Country = x.Country }).ToList();
         }
     }
 }

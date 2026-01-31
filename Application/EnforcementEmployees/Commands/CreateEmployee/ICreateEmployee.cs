@@ -18,5 +18,5 @@ public interface ICreateEmployee
     /// </summary>
     /// <param name="dto">List of employee DTOs to create.</param>
     /// <returns>Result indicating success or failure.</returns>
-    public Task<Result<string>> CreateEmployeesAsync(List<CreateEmployeeDto> dto);
+    public Task<Result<string>> CreateEmployeesAsync(List<CreateEnforcementEmployeeRequestDto> dto);
 }

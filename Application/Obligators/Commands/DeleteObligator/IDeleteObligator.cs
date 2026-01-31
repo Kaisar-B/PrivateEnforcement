@@ -14,5 +14,5 @@ namespace Application.Obligators.Commands.DeleteObligator;
 public interface IDeleteObligator
 {
     public Task<Result<int>> DeleteObligatorByIdAsync(long id);
-    public Task<Result<int>> DeleteObligatorAsync(DeleteObligatorDto dto);
+    public Task<Result<int>> DeleteObligatorAsync(DeleteObligatorRequestDto dto);
 }

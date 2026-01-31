@@ -9,7 +9,7 @@ namespace Application.ObligatorAssets.Commands.UpdateObligatorAsset.DTOs
     /// <summary>
     ///     DTO for updating assets record for specific obligator
     /// </summary>
-    public class UpdateObligatorAssetDto
+    public class UpdateObligatorAssetRequestDto
     {
         /// <summary>
         ///     Id of obligator to which new record binds

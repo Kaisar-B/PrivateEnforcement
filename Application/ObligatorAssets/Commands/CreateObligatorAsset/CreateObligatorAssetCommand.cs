@@ -21,7 +21,7 @@ public class CreateObligatorAssetCommand : ICreateObligatorAsset
     {
         _dbContext = dbContext;
     }
-    public async Task<Result<Unit>> CreateNewObligatorAssetCommandAsync(ObligatorAssetDto[] dto)
+    public async Task<Result<Unit>> CreateNewObligatorAssetCommandAsync(List<CreateObligatorAssetRequestDto> dto)
     {
         try
         {
@@ -36,7 +36,7 @@ public class CreateObligatorAssetCommand : ICreateObligatorAsset
         }
     }
 
-    private static ObligatorAsset[] ConvertToDomainModel(ObligatorAssetDto[] dto)
+    private static ObligatorAsset[] ConvertToDomainModel(List<CreateObligatorAssetRequestDto> dto)
     {
         return dto.Select(x=> new ObligatorAsset() { AssetValue = x.EstimatedAssetValue, AssetName = x.AssetName, DescriptionOfAsset = x.AssetDescription, OwnerObligatorAccountId = x.ObligatorId }).ToArray();
     }

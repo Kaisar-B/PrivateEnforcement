@@ -9,7 +9,7 @@ namespace Application.Administration.Commands.CreateEnforcement.DTOs;
 /// <summary>
 ///  Main DTO that that encapsulates update data of enforcement
 /// </summary>
-public class EnforcementUpdateDto
+public class UpdateEnforcementRequestDto
 {
     public long EnforcementId { get; set; }
     public string? EnforcementName { get; set; }

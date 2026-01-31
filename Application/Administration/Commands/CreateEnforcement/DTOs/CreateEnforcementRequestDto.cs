@@ -9,8 +9,13 @@ namespace Application.Administration.Commands.CreateEnforcement.DTOs;
 /// <summary>
 ///     Main DTO that encapsulates creation of Enforcement domain model
 /// </summary>
-public class EnforcementCreateDto
+public class CreateEnforcementRequestDto
 {
+    public string PassportNumber { get; set; }
+    public string Name { get; set; }
+    public string Surname { get; set; }
+    public string Login { get; set; }
+    public string Password { get; set; }
     public string EnforcementName { get; set; }
     public string LicenseNumber { get; set; }
     public string City { get; set; }

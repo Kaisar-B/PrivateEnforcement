@@ -32,9 +32,9 @@ internal class ObligatorsListHandler : IObligatorsList
     /// </summary>
     /// <param name="requestData"></param>
     /// <returns></returns>
-    public async Task<Result<List<ObligatorsListDto>>> GetObligatorsAsync(ObligatorFilterSorting requestData)
+    public async Task<Result<List<QueryObligatorsListResponseDto>>> GetObligatorsAsync(ObligatorFilterSorting requestData)
     {
-        var filtered = ApplyFilters(requestData, _dbContext.Obligators.AsNoTracking());
+        var filtered = ApplyFilters(requestData, _dbContext.Obligators.AsNoTracking().Include(x=>x.ObligatorAssets).Where(x=>x.OwnerEnforcementAccountId == requestData.OwningEnforcementId));
         var sorted = ApplySorting(requestData, filtered);
         var paged = await ApplyPaging(requestData, sorted);
         return  ApplyMapping(paged);
@@ -96,30 +96,30 @@ internal class ObligatorsListHandler : IObligatorsList
         return paged.Items;
     }
 
-    private static Result<List<ObligatorsListDto>> ApplyMapping(IList<ObligatorAccount> obligatorsQuery)
+    private static Result<List<QueryObligatorsListResponseDto>> ApplyMapping(IList<ObligatorAccount> obligatorsQuery)
     {
         try
         {
-            var result = obligatorsQuery.Select(x => new ObligatorsListDto()
+            var result = obligatorsQuery.Select(x => new QueryObligatorsListResponseDto()
             {
                 ObligatorId = x.Id,
                 CreationDateTime = x.CreationDateTime,
                 IsDeleted = x.IsDeleted,
                 DebtAmount = x.DebtAmount,
                 ContractNumber = x.ObligationContractNumber,
-                Assets = x.ObligatorAssets.Select(x => new ObligatorAssetsModel()
+                Assets = x.ObligatorAssets.Select(y => new ObligatorAssetsModel()
                 {
-                    AssetDescription = x.DescriptionOfAsset,
-                    AssetName = x.AssetName,
-                    AssetValue = x.AssetValue
+                    AssetDescription = y.DescriptionOfAsset,
+                    AssetName = y.AssetName,
+                    AssetValue = y.AssetValue
                 }).ToList()
             }).ToList();
 
-            return Result<List<ObligatorsListDto>>.Ok(result);        
+            return Result<List<QueryObligatorsListResponseDto>>.Ok(result);        
         }
         catch (Exception ex) 
         {
-            return Result<List<ObligatorsListDto>>.Fail(ex.Message);
+            return Result<List<QueryObligatorsListResponseDto>>.Fail(ex.Message);
         }
     }
 }

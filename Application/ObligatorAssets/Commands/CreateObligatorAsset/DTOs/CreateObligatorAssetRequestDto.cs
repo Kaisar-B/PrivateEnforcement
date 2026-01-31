@@ -9,7 +9,7 @@ namespace Application.ObligatorAssets.Commands.CreateObligatorAsset.DTOs
     /// <summary>
     ///     DTO for creating new assets record for specific obligator
     /// </summary>
-    public class ObligatorAssetDto
+    public class CreateObligatorAssetRequestDto
     {
         /// <summary>
         ///     Id of obligator to which new record binds

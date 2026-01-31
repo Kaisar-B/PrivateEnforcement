@@ -32,6 +32,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<InternalsVisibleTo Include="PrivateEnforcement.API"/>
+		<InternalsVisibleTo Include="PrivateEnforcement.API" />
 	</ItemGroup>
 </Project>

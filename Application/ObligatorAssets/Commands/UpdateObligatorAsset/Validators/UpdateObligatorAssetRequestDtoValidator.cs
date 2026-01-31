@@ -9,9 +9,9 @@ using Application.ObligatorAssets.Commands.UpdateObligatorAsset.DTOs;
 
 namespace Application.ObligatorAssets.Commands.UpdateObligatorAsset.Validators
 {
-    internal class UpdateObligatorAssetDtoValidator : AbstractValidator<UpdateObligatorAssetDto>
+    internal class UpdateObligatorAssetRequestDtoValidator : AbstractValidator<UpdateObligatorAssetRequestDto>
     {
-        public UpdateObligatorAssetDtoValidator() 
+        public UpdateObligatorAssetRequestDtoValidator() 
         {
 
             RuleFor(x => x.AssetName)

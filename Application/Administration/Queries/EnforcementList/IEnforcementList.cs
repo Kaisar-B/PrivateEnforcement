@@ -15,8 +15,8 @@ namespace Application.Administration.Queries.EnforcementList
         ///     Queries the list of enforcements with optional filtering and sorting.
         /// </summary>
         /// <param name="enforcementFilterSorting">Filter and sorting options.</param>
-        /// <returns>Result containing a list of <see cref="EnforcementDto"/> or failure message.</returns>
-        public Task<Result<List<EnforcementDto>>> QueryEnforcementListCommandAsync(EnforcementFilterSorting enforcementFilterSorting);
+        /// <returns>Result containing a list of <see cref="QueryEnforcementResponseDto"/> or failure message.</returns>
+        public Task<Result<List<QueryEnforcementResponseDto>>> QueryEnforcementListCommandAsync(EnforcementFilterSorting enforcementFilterSorting);
     }
 
 }

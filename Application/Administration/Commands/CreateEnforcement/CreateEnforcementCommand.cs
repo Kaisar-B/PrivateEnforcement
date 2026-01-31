@@ -23,17 +23,22 @@ internal class CreateEnforcementCommand : ICreateEnforcement
     {
         _dbContext = dbContext;
     }
-    public async Task<Result<Unit>> CreateEnforcementAsync(EnforcementCreateDto enforcementDto)
+    public async Task<Result<Unit>> CreateEnforcementAsync(CreateEnforcementRequestDto enforcementDto)
     {
         _dbContext.Enforcements.Add(MapToDomainModel(enforcementDto));
         await _dbContext.SaveChangesAsync();
         return Result<Unit>.Ok(Unit.ResultData);
     }
 
-    private EnforcementAccount MapToDomainModel(EnforcementCreateDto dto)
+    private EnforcementAccount MapToDomainModel(CreateEnforcementRequestDto dto)
     {
         return new EnforcementAccount()
         {
+            PassportNumber = dto.PassportNumber,
+            Name = dto.Name,
+            Surname = dto.Surname,
+            Login = dto.Login,
+            Password = dto.Password,
             EnforcementName = dto.EnforcementName,
             LicenseNumber = dto.LicenseNumber,
             City = dto.City,
@@ -58,6 +63,7 @@ internal class CreateEnforcementCommand : ICreateEnforcement
             PassportNumber = x.PassportNumber,
             Name = x.Name,
             Surname = x.Surname,
+            Login = x.Login,
             DebtAmount = x.DebtAmount,
             ObligationContractNumber = x.ObligationContractNumber,
             City = x.City,

@@ -9,7 +9,7 @@ namespace Application.ObligatorAssets.Queries.DTOs;
 /// <summary>
 ///     DTO that represents obligator assets.
 /// </summary>
-public class ObligatorAssetDto
+public class QueryObligatorAssetResponseDto
 {
     public long Id { get; set; }
     public string Name { get; set; }

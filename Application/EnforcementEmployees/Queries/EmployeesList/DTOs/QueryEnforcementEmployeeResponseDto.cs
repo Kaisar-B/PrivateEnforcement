@@ -9,7 +9,7 @@ namespace Application.EnforcementEmployees.Queries.EmployeesList.DTOs;
 /// <summary>
 /// 
 /// </summary>
-public class EnforcementEmployeeDto
+public class QueryEnforcementEmployeeResponseDto
 {
     public long Id {  get; set; }
     public DateTime CreatedDate { get; set; }

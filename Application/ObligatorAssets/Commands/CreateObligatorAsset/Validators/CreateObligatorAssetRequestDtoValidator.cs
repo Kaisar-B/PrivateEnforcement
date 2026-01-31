@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Application.ObligatorAssets.Commands.CreateObligatorAsset.Validators
 {
-    internal class ObligatorAssetDtoValidator : AbstractValidator<ObligatorAssetDto>
+    internal class CreateObligatorAssetRequestDtoValidator : AbstractValidator<CreateObligatorAssetRequestDto>
     {
-        public ObligatorAssetDtoValidator() 
+        public CreateObligatorAssetRequestDtoValidator() 
         {
             RuleFor(x => x.ObligatorId)
                 .NotEmpty()

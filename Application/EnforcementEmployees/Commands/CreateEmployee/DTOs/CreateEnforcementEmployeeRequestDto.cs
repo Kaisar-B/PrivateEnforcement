@@ -9,11 +9,13 @@ namespace Application.Employees.Commands.CreateEmployee.DTOs;
 /// <summary>
 /// DTO representing an employee to be created in the system.
 /// </summary>
-public class CreateEmployeeDto
+public class CreateEnforcementEmployeeRequestDto
 {
     public string PassportNumber { get; set; }
     public string Name { get; set; }
     public string Surname { get; set; }
     public string Login { get; set; }
+    public string Password { get; set; }
     public string Position { get; set; }
+    public long EnforcementEmployerId { get; set; }
 }

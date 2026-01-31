@@ -99,8 +99,6 @@ namespace Domain.Migrations
                     PassportNumber = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Surname = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    Login = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     IsBlocked = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -180,12 +178,6 @@ namespace Domain.Migrations
                 column: "PassportNumber",
                 unique: true,
                 filter: "[PassportNumber] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Obligators_Login",
-                table: "Obligators",
-                column: "Login",
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Obligators_ObligationContractNumber",

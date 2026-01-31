@@ -39,7 +39,7 @@ public class UpdateEmployeeCommand : IUpdateEmployee
     /// <returns>
     ///     Result containing information about update operation.
     /// </returns>
-    public async Task<Result<string>> UpdateEmployeesAsync(List<UpdateEmployeeDto> dtos)
+    public async Task<Result<string>> UpdateEmployeesAsync(List<UpdateEnforcementEmployeeRequestDto> dtos)
     {
         try
         {
@@ -84,7 +84,7 @@ public class UpdateEmployeeCommand : IUpdateEmployee
     ///     True if at least one property was updated.
     /// </returns>
     private static bool UpdateEmployeeRecord(
-        UpdateEmployeeDto dto,
+        UpdateEnforcementEmployeeRequestDto dto,
         EnforcementEmployee enforcementEmployee)
     {
         bool updated = false;

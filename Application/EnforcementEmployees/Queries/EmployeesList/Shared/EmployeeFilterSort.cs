@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 namespace Application.EnforcementEmployees.Queries.EmployeesList.Shared;
 public class EmployeeFilterSort
 {
+    /// <summary>
+    ///  Whose employees being retrived.
+    /// </summary>
+    public long EnforcementEmployerId { get; set; }
 
     // Filters
     public DateTime? FromCreationDateTime { get; set; }

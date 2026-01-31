@@ -12,5 +12,5 @@ namespace Application.EnforcementEmployees.Commands.UpdateEmployee;
 /// </summary>
 public interface IUpdateEmployee
 {
-    public Task<Result<string>> UpdateEmployeesAsync(List<UpdateEmployeeDto> dtos);
+    public Task<Result<string>> UpdateEmployeesAsync(List<UpdateEnforcementEmployeeRequestDto> dtos);
 }

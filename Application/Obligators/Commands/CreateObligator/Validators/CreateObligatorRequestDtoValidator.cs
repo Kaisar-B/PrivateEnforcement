@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Application.Obligators.Commands.CreateObligator.Validators;
-internal class NewObligatorDtoValidator : AbstractValidator<NewObligatorDto>
+internal class CreateObligatorRequestDtoValidator : AbstractValidator<CreateObligatorRequestDto>
 {
-    public NewObligatorDtoValidator()
+    public CreateObligatorRequestDtoValidator()
     {
         RuleFor(x => x.DebtAmount)
             .GreaterThanOrEqualTo(0)

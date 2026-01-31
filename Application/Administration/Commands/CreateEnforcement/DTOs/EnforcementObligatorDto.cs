@@ -15,6 +15,7 @@ public class EnforcementObligatorDto
     public string PassportNumber { get; set; }
     public string Name { get; set; }
     public string Surname { get; set; }
+    public string Login { get; set; }
     public decimal DebtAmount { get; set; }
     public string ObligationContractNumber { get; set; }
     public string City { get; set; }

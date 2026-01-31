@@ -9,7 +9,7 @@ namespace Application.Administration.Queries.EnforcementList.DTOs
     /// <summary>
     ///     Main DTO that that encapsulates data retrived
     /// </summary>
-    public class EnforcementDto
+    public class QueryEnforcementResponseDto
     {
         public string? EnforcementName { get; set; }
         public string? LicenseNumber { get; set; }

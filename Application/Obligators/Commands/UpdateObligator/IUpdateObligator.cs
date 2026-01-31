@@ -13,5 +13,5 @@ namespace Application.Obligators.Commands.UpdateObligator;
 /// </summary>
 public interface IUpdateObligator
 {
-    public Task<Result<int>> UpdateObligatorAsync(UpdateObligatorDto updateObligatorDto);
+    public Task<Result<int>> UpdateObligatorAsync(UpdateObligatorRequestDto updateObligatorDto);
 }

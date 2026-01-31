@@ -25,4 +25,5 @@ public class ObligatorAssetsDto
     ///     Description of asset
     /// </summary>
     public string DescriptionOfAsset { get; set; } = string.Empty;
+
 }

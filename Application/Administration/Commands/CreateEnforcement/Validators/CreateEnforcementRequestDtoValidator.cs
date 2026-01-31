@@ -11,9 +11,9 @@ namespace Application.Administration.Commands.CreateEnforcement.Validators;
 /// <summary>
 ///     Validation rules applied when creating a new enforcement entity.
 /// </summary>
-internal class EnforcementDtoValidator : AbstractValidator<EnforcementCreateDto>
+internal class CreateEnforcementRequestDtoValidator : AbstractValidator<CreateEnforcementRequestDto>
 {
-    public EnforcementDtoValidator()
+    public CreateEnforcementRequestDtoValidator()
     {
         RuleFor(x => x.EnforcementName)
             .NotEmpty()
@@ -35,7 +35,7 @@ internal class EnforcementDtoValidator : AbstractValidator<EnforcementCreateDto>
 
         // Country is optional because it defaults to KZ on the backend
         RuleFor(x => x.Country)
-            .Null()
+            .NotEmpty()
             .WithSeverity(Severity.Warning)
             .WithName("Страна откуда ЧСИ")
             .WithMessage("По умолчанию указана страна КЗ. При необходимости измените значение.");

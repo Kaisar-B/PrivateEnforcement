@@ -13,7 +13,7 @@ namespace Application.Administration.Commands.UpdateEnforcement
 {
     /// <summary>
     ///     Command to update an enforcement entity in the system.
-    ///     Only properties that are not null in the <see cref="EnforcementUpdateDto"/> 
+    ///     Only properties that are not null in the <see cref="UpdateEnforcementRequestDto"/> 
     ///     will be applied to the entity.
     /// </summary>
     internal class UpdateEnforcementCommand : IUpdateEnforcement
@@ -25,7 +25,7 @@ namespace Application.Administration.Commands.UpdateEnforcement
             _dbContext = dbContext;
         }
 
-        public async Task<Result<Unit>> UpdateEnforcementCommandAsync(EnforcementUpdateDto enforcementUpdateDto)
+        public async Task<Result<Unit>> UpdateEnforcementCommandAsync(UpdateEnforcementRequestDto enforcementUpdateDto)
         {
             var domainModel = await _dbContext.Enforcements.FirstOrDefaultAsync(x=>x.Id== enforcementUpdateDto.EnforcementId);
             if (domainModel == null) 
@@ -37,7 +37,7 @@ namespace Application.Administration.Commands.UpdateEnforcement
             return Result<Unit>.Ok(Unit.ResultData);
         }
 
-        private void ApplyUpdate(EnforcementUpdateDto dto, EnforcementAccount enforcementDomain)
+        private void ApplyUpdate(UpdateEnforcementRequestDto dto, EnforcementAccount enforcementDomain)
         {
             if (dto.EnforcementName != null)
             {

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Application.Obligators.Queries.Shared;
 public class ObligatorFilterSorting
 {
+    public long OwningEnforcementId { get; set; }
     // Filters
     public decimal? MinDebAmount { get; set; }
     public decimal? MaxDebtAmount { get; set; }

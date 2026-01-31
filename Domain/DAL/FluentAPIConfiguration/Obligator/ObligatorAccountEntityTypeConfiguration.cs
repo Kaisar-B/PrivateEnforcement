@@ -20,6 +20,8 @@ internal class ObligatorAccountEntityTypeConfiguration : BaseAccountEntityTypeCo
         builder.Property(x => x.DebtAmount).IsRequired(false);
         builder.Property(X => X.ObligationContractNumber).HasMaxLength(200);
         builder.HasIndex(x => x.ObligationContractNumber).IsUnique(true);
+        builder.Ignore(x => x.Login);
+        builder.Ignore(x => x.Password);
 
         // Relation configurations
         builder.HasMany(x => x.ObligatorAssets)

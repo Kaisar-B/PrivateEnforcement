@@ -10,7 +10,7 @@ namespace Application.Obligators.Commands.UpdateObligator.DTOs;
 /// <summary>
 ///     DTO model for updating obligator info and his owning assets.
 /// </summary>
-public class UpdateObligatorDto
+public class UpdateObligatorRequestDto
 {
     /// <summary>
     ///     Id of obligator

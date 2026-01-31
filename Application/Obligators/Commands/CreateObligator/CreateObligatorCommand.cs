@@ -21,7 +21,7 @@ internal class CreateObligatorCommand : ICreateObligator
     {
         _dbContext = dbContext;
     }
-    public async Task<Result<int>> CreateObligatorAsync(NewObligatorDto newObligator)
+    public async Task<Result<int>> CreateObligatorAsync(CreateObligatorRequestDto newObligator)
     {
         if (newObligator is null)
             return Result<int>.Fail("NewObligatorDto cannot be null.");
@@ -40,23 +40,26 @@ internal class CreateObligatorCommand : ICreateObligator
         }
     }
 
-    private ObligatorAccount ConvertDomainModel(NewObligatorDto dto) 
+    private ObligatorAccount ConvertDomainModel(CreateObligatorRequestDto dto) 
     {
         return new ObligatorAccount()
         {
+            Name = dto.Name,
+            Surname = dto.Surname,
+            PassportNumber = dto.PassportNumber,
             DebtAmount = dto.DebtAmount,
             ObligationContractNumber = dto.ObligationContractNumber,
             City = dto.City,
             Region = dto.Region,
-            //todo  - assign OwnerEnforcementAccountId - based on Context request
+            OwnerEnforcementAccountId = dto.OwnerEnforcementAccountId,
+            //todo  - assign OwnerEnforcementAccountId - based on Context request - based on application culture, not dto based.
             ObligatorAssets = dto.ObligatorAssets
                 .Select(x => new ObligatorAsset() 
                 { 
                     AssetName = x.AssetName,
                     AssetValue = x.AssetValue,
                     CreationDateTime = DateTime.Now,
-                    DescriptionOfAsset = x.DescriptionOfAsset
-                    //todo assign asset`s owner (Private enforcement)
+                    DescriptionOfAsset = x.DescriptionOfAsset,
                 }).ToList(),
         };
     }

@@ -21,22 +21,22 @@ internal class QueryObligatorAssetCommand : IQueryObligatorAsset
     {
         _dbContext = dbContext;
     }
-    public async Task<Result<List<ObligatorAssetDto>>> QueryObligatorsById(long[] ids)
+    public async Task<Result<List<QueryObligatorAssetResponseDto>>> QueryObligatorsById(long[] ids)
     {
         try
         {
             var obligatorAssets = _dbContext.ObligatorsAssets.Where(x => ids.Contains(x.Id));
             if (!obligatorAssets.Any()) 
             {
-                return Result<List<ObligatorAssetDto>>.Fail("Записи с указанным id не были найденны в БД");
+                return Result<List<QueryObligatorAssetResponseDto>>.Fail("Записи с указанным id не были найденны в БД");
             }
-            var dtoConverted = await obligatorAssets.Select(x => new ObligatorAssetDto() { Id = x.Id, Name = x.AssetName, Description = x.DescriptionOfAsset, AssetsValue = x.AssetValue }).ToListAsync();
+            var dtoConverted = await obligatorAssets.Select(x => new QueryObligatorAssetResponseDto() { Id = x.Id, Name = x.AssetName, Description = x.DescriptionOfAsset, AssetsValue = x.AssetValue }).ToListAsync();
 
-            return Result<List<ObligatorAssetDto>>.Ok(dtoConverted);
+            return Result<List<QueryObligatorAssetResponseDto>>.Ok(dtoConverted);
         }
         catch(Exception ex)
         {
-            return Result<List<ObligatorAssetDto>>.Fail("Возникла ошибка при запросы в БД");
+            return Result<List<QueryObligatorAssetResponseDto>>.Fail("Возникла ошибка при запросы в БД");
         }
     }
 }
