@@ -5,21 +5,18 @@ using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using PrivateEnforcement.API;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Testcontainers.MsSql;
 
 namespace PrivateEnforcement.IntegrationTests.API.TestSetUp;
 public class TestWebAppFactory : WebApplicationFactory<Program>, IAsyncLifetime
 {
+    // Setting up docker image for run. This is MS SQL Server.
     private readonly MsSqlContainer _msSqlContainer = new MsSqlBuilder()
         .WithImage("mcr.microsoft.com/mssql/server:2022-latest")
         .WithPassword("SomeRandom!@#$232")
         .Build();
 
+    // This builds TEST DI set up and Web Host set up. So it mocks original "Program.cs" with its test configs.
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.ConfigureTestServices(services =>
