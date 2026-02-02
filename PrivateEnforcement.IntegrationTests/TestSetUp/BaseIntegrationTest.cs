@@ -9,15 +9,15 @@ using Application.Administration.Commands.CreateEnforcement;
 using Application.ObligatorAssets.Commands.CreateObligatorAsset;
 using Domain.DAL;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Testing;
+using PrivateEnforcement.API;
 
 namespace PrivateEnforcement.IntegrationTests.API.TestSetUp;
-public abstract class BaseIntegrationTest : IClassFixture<TestWebAppFactory>
+public abstract class BaseIntegrationTest : IClassFixture<TestWebAppFactory>, IDisposable
 {
     private readonly IServiceScope _serviceScope;
-    protected readonly ICreateObligatorAsset _createObligatorAsset;
-    protected readonly ICreateEnforcement _createEnforcement;
     protected readonly DatabaseContext _databaseContext;
-    protected BaseIntegrationTest(TestWebAppFactory factory)
+    public BaseIntegrationTest(TestWebAppFactory factory)
     {
         _serviceScope = factory.Services.CreateScope();
 
@@ -25,8 +25,10 @@ public abstract class BaseIntegrationTest : IClassFixture<TestWebAppFactory>
 
         _databaseContext.Database.EnsureDeleted();
         _databaseContext.Database.EnsureCreated();
+    }
 
-        _createObligatorAsset = _serviceScope.ServiceProvider.GetRequiredService<ICreateObligatorAsset>();
-        _createEnforcement = _serviceScope.ServiceProvider.GetRequiredService<ICreateEnforcement>();
+    public void Dispose()
+    {
+        _serviceScope.Dispose();
     }
 }

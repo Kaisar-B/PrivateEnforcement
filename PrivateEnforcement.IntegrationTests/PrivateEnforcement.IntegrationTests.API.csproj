@@ -31,9 +31,4 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="EnforcementEmployees\" />
-    <Folder Include="Obligators\" />
-  </ItemGroup>
-
 </Project>

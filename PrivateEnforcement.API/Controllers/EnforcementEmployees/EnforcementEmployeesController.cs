@@ -60,7 +60,7 @@ public class EnforcementEmployeesController : ControllerBase
     }
 
     [HttpDelete("delete")]
-    public async Task<ActionResult> DeleteEnforcementEmployee([FromBody] List<long> dto)
+    public async Task<ActionResult> DeleteEnforcementEmployee([FromQuery] List<long> dto)
     {
         Result<string> result = await _delete.DeleteEmployeesByIdAsync(dto);
         if (result.IsSuccess)
