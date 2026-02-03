@@ -15,7 +15,7 @@ namespace PrivateEnforcement.IntegrationTests.API.EnforcementEmployees
         private readonly HttpClient _client;
         public EnforcementEmployeeTests(TestWebAppFactory factory): base(factory) 
         {
-            var _client = factory.CreateClient();
+            _client = factory.CreateClient();
         }
 
         [Fact]

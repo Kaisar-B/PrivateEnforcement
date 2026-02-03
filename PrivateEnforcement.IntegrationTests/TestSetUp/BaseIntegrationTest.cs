@@ -22,9 +22,6 @@ public abstract class BaseIntegrationTest : IClassFixture<TestWebAppFactory>, ID
         _serviceScope = factory.Services.CreateScope();
 
         _databaseContext = _serviceScope.ServiceProvider.GetRequiredService<DatabaseContext>();
-
-        _databaseContext.Database.EnsureDeleted();
-        _databaseContext.Database.EnsureCreated();
     }
 
     public void Dispose()
